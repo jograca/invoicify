@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class User implements UserDetails {
 	@SequenceGenerator(name = "user_id_seq", sequenceName = "user_id_seq")
 	private Long id;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Role> roles;
 
 	@Column(nullable = false, unique = true)
